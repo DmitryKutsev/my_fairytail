@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My Fairy Tale Library</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; background-color: #faf4ff; }
+        header { text-align: center; margin-bottom: 2rem; }
+        form { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem; }
+        form input { padding: 0.5rem; border: 1px solid #a97dda; border-radius: 4px; }
+        form button { padding: 0.5rem 1rem; background-color: #7a4ebc; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+        .tale { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 1.5rem; }
+        .tale h2 { margin-top: 0; }
+        .meta { color: #6a5495; font-weight: bold; }
+        .relations { margin-top: 0.5rem; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>My Fairy Tale</h1>
+    <p>Discover connections between tales through keyword and rubric filtering.</p>
+</header>
+<section>
+    <form method="get">
+        {{ form.keyword }}
+        {{ form.author }}
+        {{ form.country }}
+        <button type="submit">Search</button>
+    </form>
+
+    {% if tales %}
+        {% for tale in tales %}
+            <article class="tale">
+                <h2>{{ tale.title }}</h2>
+                <p class="meta">By {{ tale.author }} from {{ tale.country }}</p>
+                <p>{{ tale.content|truncatewords:60 }}</p>
+                <div class="relations">
+                    {% if tale.predecessor %}
+                        <p><strong>Predecessor:</strong> {{ tale.predecessor.title }}</p>
+                    {% endif %}
+                    {% if tale.successor %}
+                        <p><strong>Successor:</strong> {{ tale.successor.title }}</p>
+                    {% endif %}
+                    {% if tale.similar_tales.all %}
+                        {% with similar=tale.similar_tales.all %}
+                            {% if similar %}
+                                <p><strong>Similar tales:</strong>
+                                    {% for similar_tale in similar %}
+                                        {{ similar_tale.title }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </p>
+                            {% endif %}
+                        {% endwith %}
+                    {% endif %}
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>No tales found. Try adjusting your search.</p>
+    {% endif %}
+</section>
+</body>
+</html>
