@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Fairy Tale Land</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 2rem;
+        }
+        h1 {
+            color: #4a5568;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .subtitle {
+            color: #718096;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        .emoji {
+            font-size: 3rem;
+            margin: 1rem 0;
+            animation: sparkle 2s ease-in-out infinite alternate;
+        }
+        @keyframes sparkle {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+        .description {
+            color: #2d3748;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        .footer {
+            margin-top: 2rem;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Fairy Tale Land</h1>
+        <div class="emoji">🌟✨</div>
+        <p class="subtitle">Where magic and stories come alive</p>
+        <p class="description">
+            Step into a world of wonder and enchantment. Here you'll discover 
+            timeless tales from lands far and wide, each carrying the magic 
+            of storytelling through generations.
+        </p>
+        <div class="footer">
+            <p>Simple greeting view that returns a welcome message</p>
+        </div>
+    </div>
+</body>
+</html>
