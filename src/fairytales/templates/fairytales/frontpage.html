@@ -3,73 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Fairy Tale Land</title>
+    <title>Fairy Tale Corpus</title>
     <style>
         body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Times New Roman', serif;
+            background: linear-gradient(135deg, #1a4d3a 0%, #2d5a47 50%, #1a4d3a 100%);
             margin: 0;
             padding: 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #f0f8f0;
         }
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: rgba(26, 77, 58, 0.95);
+            padding: 4rem;
+            border-radius: 8px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
             text-align: center;
-            max-width: 600px;
+            max-width: 800px;
             margin: 2rem;
+            border: 2px solid rgba(240, 248, 240, 0.2);
         }
         h1 {
-            color: #4a5568;
-            font-size: 2.5rem;
+            color: #f0f8f0;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 300;
+            letter-spacing: 2px;
         }
         .subtitle {
-            color: #718096;
-            font-size: 1.2rem;
+            color: #c8d5c8;
+            font-size: 1.4rem;
             margin-bottom: 2rem;
             font-style: italic;
-        }
-        .emoji {
-            font-size: 3rem;
-            margin: 1rem 0;
-            animation: sparkle 2s ease-in-out infinite alternate;
-        }
-        @keyframes sparkle {
-            0% { transform: scale(1) rotate(0deg); }
-            100% { transform: scale(1.1) rotate(5deg); }
+            font-weight: 300;
         }
         .description {
-            color: #2d3748;
+            color: #e0f0e0;
+            line-height: 1.8;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .features {
+            background: rgba(45, 90, 71, 0.3);
+            padding: 2rem;
+            border-radius: 6px;
+            margin: 2rem 0;
+            border-left: 4px solid #4a7c59;
+        }
+        .features h3 {
+            color: #f0f8f0;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .features ul {
+            color: #d0e0d0;
+            text-align: left;
             line-height: 1.6;
-            font-size: 1.1rem;
+        }
+        .features li {
+            margin-bottom: 0.5rem;
         }
         .footer {
-            margin-top: 2rem;
-            color: #a0aec0;
+            margin-top: 3rem;
+            color: #a0b8a0;
             font-size: 0.9rem;
+            border-top: 1px solid rgba(240, 248, 240, 0.2);
+            padding-top: 1rem;
+        }
+        .academic-badge {
+            display: inline-block;
+            background: rgba(74, 124, 89, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #c8d5c8;
+            margin-top: 1rem;
+        }
+        .search-section {
+            background: rgba(45, 90, 71, 0.4);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 1px solid rgba(240, 248, 240, 0.2);
+        }
+        .search-form {
+            display: grid;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .search-input {
+            background: rgba(26, 77, 58, 0.8);
+            border: 1px solid rgba(240, 248, 240, 0.3);
+            border-radius: 4px;
+            padding: 0.75rem;
+            color: #f0f8f0;
+            font-size: 1rem;
+            font-family: 'Times New Roman', serif;
+        }
+        .search-input::placeholder {
+            color: #a0b8a0;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #4a7c59;
+            box-shadow: 0 0 0 2px rgba(74, 124, 89, 0.3);
+        }
+        .filters-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+        .search-button {
+            background: #4a7c59;
+            color: #f0f8f0;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Times New Roman', serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .search-button:hover {
+            background: #5a8c69;
+        }
+        .search-label {
+            color: #c8d5c8;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Fairy Tale Land</h1>
-        <div class="emoji">🌟✨</div>
-        <p class="subtitle">Where magic and stories come alive</p>
-        <p class="description">
-            Step into a world of wonder and enchantment. Here you'll discover 
-            timeless tales from lands far and wide, each carrying the magic 
-            of storytelling through generations.
-        </p>
-        <div class="footer">
-            <p>Simple greeting view that returns a welcome message</p>
+        <h1>Fairy Tale Corpus</h1>
+        
+        <div class="description">
+            Welcome to the Fairy Tale Collection, a digital repository dedicated to the systematic collection, 
+            analysis, and preservation of folkloric narratives from diverse cultural traditions. This corpus serves 
+            as a research platform for folklore studies, linguistic analysis, and cultural anthropology.
         </div>
+
+        <div class="search-section">
+            <h3 style="color: #f0f8f0; margin-bottom: 1.5rem; text-align: center;">Explore the Collection</h3>
+            <div style="text-align: center;">
+                <a href="{% url 'search' %}" class="search-button" style="text-decoration: none; display: inline-block;">
+                    Search Fairy Tales
+                </a>
+            </div>
+        </div>
+        
     </div>
 </body>
 </html>
