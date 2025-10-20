@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import FairyTale, Language, FairyTaleGroup, AncestralRelationship
+from .models import FairyTale, Language, FairyTaleGroup, AncestralRelationship, Source, Symbol
 
 # Register your models here.
 @admin.register(Language)
@@ -33,6 +33,14 @@ class AncestralRelationshipAdmin(admin.ModelAdmin):
         }),
     )
 
+class SourceInline(admin.TabularInline):
+    model = Source
+    extra = 1
+
+class SymbolInline(admin.TabularInline):
+    model = Symbol
+    extra = 1
+
 @admin.register(FairyTale)
 class FairyTaleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'language', 'land_of_origin', 'created_at')
@@ -40,6 +48,7 @@ class FairyTaleAdmin(admin.ModelAdmin):
     search_fields = ('title', 'author', 'land_of_origin')
     readonly_fields = ('created_at', 'updated_at')
     filter_horizontal = ('groups',)  # Better UI for many-to-many
+    inlines = [SourceInline, SymbolInline]
     fieldsets = (
         ('Basic Information', {
             'fields': ('title', 'author', 'language', 'land_of_origin')
@@ -55,3 +64,14 @@ class FairyTaleAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+
+@admin.register(Source)
+class SourceAdmin(admin.ModelAdmin):
+    list_display = ('tale', 'source_author', 'language', 'link')
+    list_filter = ('language',)
+    search_fields = ('tale__title', 'source_author', 'translation')
+
+@admin.register(Symbol)
+class SymbolAdmin(admin.ModelAdmin):
+    list_display = ('symbol', 'tale', 'interpretation_author')
+    search_fields = ('symbol', 'tale__title', 'interpretation', 'interpretation_author', 'interpretation_source')

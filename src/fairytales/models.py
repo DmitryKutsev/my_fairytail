@@ -64,3 +64,31 @@ class FairyTale(models.Model):
 
     def __str__(self):
         return self.title
+
+class Source(models.Model):
+    tale = models.ForeignKey(FairyTale, on_delete=models.CASCADE, related_name='sources')
+    link = models.URLField(blank=True)  # optional source link
+    language = models.ForeignKey(Language, on_delete=models.PROTECT)
+    source_author = models.CharField(max_length=200)
+    translation = models.CharField(max_length=200, blank=True)  # optional translation credit
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['source_author']
+
+    def __str__(self):
+        return f"{self.source_author} ({self.language.code})"
+
+class Symbol(models.Model):
+    tale = models.ForeignKey(FairyTale, on_delete=models.CASCADE, related_name='symbols')
+    symbol = models.CharField(max_length=200)
+    interpretation = models.TextField()
+    interpretation_author = models.CharField(max_length=200, blank=True)
+    interpretation_source = models.CharField(max_length=255, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['symbol']
+
+    def __str__(self):
+        return f"{self.symbol} — {self.tale.title}"
