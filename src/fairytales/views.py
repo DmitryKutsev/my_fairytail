@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Q
-from .models import FairyTale, Language
+from .models import FairyTale
 
 # Create your views here.
 
